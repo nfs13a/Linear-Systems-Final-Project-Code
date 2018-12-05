@@ -58,7 +58,7 @@ Bd =  int(simplify(expm(A * sigma)), sigma, [0 ts]) * B
 
 % *** start part (d) ***
 % controllability and observability are fully addressed in respective maple files
-% work with controllability Gramian remains for use with controller in part e
+% work with controllability Grammian 
 
 syms t0 tf;
 % modSTM = subs(STM, t, t0);
