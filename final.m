@@ -39,17 +39,28 @@ Ad = simplify(expm(A*ts))
 syms sigma;
 Bd = int(simplify(expm(A * sigma)), sigma, [0 ts]) * B
 
-% x = -5:1e-3:45;
-% eigs = eig(Ad);
-% y = eigs(4,1);
-% y = subs(y, ts, .01);
-% y = subs(y, w, x);
-% plot(x,y);
+% Jordan computation of full discrete STM too expensive
+% syms k;
+% modAd = subs(Ad, ts, .01)
+% [Q,Jor] = jordan(simplify(modAd));
+% Jor = simplify(Jor)
+% Q = simplify(Q)
+%{
+modJor =  [ 1, k*1,                                                                              0,                                                                              0; ...
+			0, 1,                                                                              0,                                                                              0; ...
+			0, 0, ((exp(-(w*1i)/100)*(2*exp((w*1i)/50) + 2*((exp((w*1i)/50) - 1)^2)^(1/2) + 2))/4)^k,                                                                              0; ...
+			0, 0,                                                                              0, ((exp(-(w*1i)/100)*(2*exp((w*1i)/50) - 2*((exp((w*1i)/50) - 1)^2)^(1/2) + 2))/4)^k];
+%}
+% STMd = simplify(Q * modJor * inv(Q))
 
-% shows eigenvalues never reach 0
-% syms sol;
-% solve(cosh(3^(1/2)*.01*sol) - sinh(3^(1/2)*.01*sol)==0,sol)
-% solve(cosh(3^(1/2)*.01*sol) + sinh(3^(1/2)*.01*sol)==0,sol)
+x = -5:1e-3:45;
+eigs = eig(Ad);
+y = eigs(4,1);
+y = subs(y, ts, .01);
+y = subs(y, w, x);
+plot(x,y);
+
+% eigenvalues never reach 0 shown in Maple
 
 % *** start part (c) ***
 % since sys is LTI, analyzing eigenvalues for US/UES
