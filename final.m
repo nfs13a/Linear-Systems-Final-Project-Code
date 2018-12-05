@@ -52,14 +52,7 @@ Bd =  int(simplify(expm(A * sigma)), sigma, [0 ts]) * B
 % solve(cosh(3^(1/2)*.01*sol) + sinh(3^(1/2)*.01*sol)==0,sol)
 
 % *** start part (c) ***
-oneNorm = norm(STM, 1)
-frobNorm = norm(STM, 'fro')
-
-
-% abs((3^(1/2)*exp(3^(1/2)*w*(t - tau)))/3 - (3^(1/2)*exp(-3^(1/2)*w*(t - tau)))/3 - 2*t*w + 2*tau*w) + abs(cosh(3^(1/2)*w*(t - tau))) + 3^(1/2)*abs(w*sinh(3^(1/2)*w*(t - tau))) + abs(exp(3^(1/2)*w*(t - tau)) - 1)^2*exp(-real(3^(1/2)*w*(t - tau)))*abs(w)
-% abs(cosh(3^(1/2)*w*(t - tau))) + (2*3^(1/2)*abs(sinh(3^(1/2)*w*(t - tau))))/3 + (3^(1/2)*abs(sinh(3^(1/2)*w*(t - tau))))/(3*abs(w)) + (abs(exp(3^(1/2)*w*(t - tau)) - 1)^2*exp(-real(3^(1/2)*w*(t - tau))))/(3*abs(w))
-% abs(t - tau) + 1
-
+% since sys is LTI, analyzing eigenvalues for US/UES
 % for the rest of this part, look to Maple files
 
 % *** start part (d) ***
