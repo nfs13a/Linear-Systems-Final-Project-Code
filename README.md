@@ -6,4 +6,4 @@ The Matlab file contains many comments of lines used to generate the needed resu
 
 Maple was used to symbolic manipulation when it was deemed more convenient than Matlab. Each portion of part c could have multiple Maple files, denoted by the file names.
 
-I intended to create this repo much earlier. If I had, many more pushes would be present.
+I intended to create this repo when I started the coding. If I had, many more pushes would be present.
