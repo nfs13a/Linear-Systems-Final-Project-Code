@@ -53,14 +53,13 @@ modJor =  [ 1, k*1,                                                             
 %}
 % STMd = simplify(Q * modJor * inv(Q))
 
-x = -5:1e-3:45;
-eigs = eig(Ad);
-y = eigs(4,1);
-y = subs(y, ts, .01);
-y = subs(y, w, x);
-plot(x,y);
-
-% eigenvalues never reach 0 shown in Maple
+% shows range of eigenvalues dependent on w
+% x = 0:1:10000;
+% eigs = eig(Ad);
+% y = eigs(4,1);
+% y = subs(y, ts, .01);
+% y = subs(y, w, x);
+% plot(x,y);
 
 % *** start part (c) ***
 % since sys is LTI, analyzing eigenvalues for US/UES
@@ -151,12 +150,19 @@ JRangePos = subs(Jpos, tf, tfRange);
 JRangeNeg = subs(Jneg, tf, tfRange);
 figure;
 plot(tfRange, JRangePos);
+title("Energy Consumption vs Transfer Time, Theta = pi/10");
+xlabel("t_f Final Time (TU)");
+ylabel("Energy Consumed (EU)");
+
 figure;
 plot(tfRange, JRangeNeg);
-
+title("Energy Consumption vs Transfer Time, Theta = -pi/10");
+xlabel("t_f Final Time (TU)");
+ylabel("J Energy Consumed (EU)");
 % *** start part (f) ***
 % https://en.wikipedia.org/wiki/State_observer#Continuous-time_case
 
+% obtained in Maple
 % coeffs = [1    4    5.5    5    1.5625];
 syms l1 l2 l3 l4;
 % l = [0,0,0,0];
